@@ -1,5 +1,5 @@
 /**
- * Pivate Routes are those API urls that require the user to be
+ * Private Routes are those API urls that require the user to be
  * logged in before they can be called from the front end.
  * 
  * Basically all HTTP requests to these endpoints must have an
@@ -12,12 +12,12 @@
  */
 
 import { Router } from 'express';
-import { safe } from './utils';
-import * as actions from './actions';
 
 // declare a new router to include all the endpoints
 const router = Router();
 
-router.get('/user', safe(actions.getUsers));
+// Por ahora, todas las rutas de StarWars están en routes.ts como rutas públicas
+// porque la API no requiere autenticación según las instrucciones del ejercicio
+// Cuando se implemente JWT, mover aquí las rutas que requieran autenticación
 
 export default router;

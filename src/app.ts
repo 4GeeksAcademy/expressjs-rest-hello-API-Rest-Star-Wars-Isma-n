@@ -6,7 +6,7 @@ import cors from 'cors';
 import { createConnection } from 'typeorm';
 import { url, renderIndex } from "./utils"
 import privateRoutes from './private_routes'
-import publicRoutes from './public_routes'
+import publicRoutes from './routes'
 
 var PORT = process.env.PORT || '3001';
 const PUBLIC_URL = url(PORT)

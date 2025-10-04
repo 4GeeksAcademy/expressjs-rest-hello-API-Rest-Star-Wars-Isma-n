@@ -26,6 +26,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Users = void 0;
 var typeorm_1 = require("typeorm");
+var People_1 = require("../entities/People");
+var Planet_1 = require("../entities/Planet");
 var Users = /** @class */ (function (_super) {
     __extends(Users, _super);
     function Users() {
@@ -51,6 +53,28 @@ var Users = /** @class */ (function (_super) {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Users.prototype, "password");
+    __decorate([
+        typeorm_1.Column({ "default": true }),
+        __metadata("design:type", Boolean)
+    ], Users.prototype, "is_active");
+    __decorate([
+        typeorm_1.ManyToMany(function () { return People_1.People; }, function (people) { return people.favorited_by; }),
+        typeorm_1.JoinTable({
+            name: 'user_favorite_people',
+            joinColumn: { name: 'user_id', referencedColumnName: 'id' },
+            inverseJoinColumn: { name: 'people_id', referencedColumnName: 'id' }
+        }),
+        __metadata("design:type", Array)
+    ], Users.prototype, "favorite_people");
+    __decorate([
+        typeorm_1.ManyToMany(function () { return Planet_1.Planet; }, function (planet) { return planet.favorited_by; }),
+        typeorm_1.JoinTable({
+            name: 'user_favorite_planets',
+            joinColumn: { name: 'user_id', referencedColumnName: 'id' },
+            inverseJoinColumn: { name: 'planet_id', referencedColumnName: 'id' }
+        }),
+        __metadata("design:type", Array)
+    ], Users.prototype, "favorite_planets");
     Users = __decorate([
         typeorm_1.Entity()
     ], Users);

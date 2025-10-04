@@ -1,20 +1,16 @@
 const dotenv = require('dotenv-override');
-dotenv.config({override: true})// load .env variables
+dotenv.config({override: true})
 
-console.log("process.env.DATABASE_URL", process.env.DATABASE_URL)
+console.log("Using SQLite database")
+
 module.exports = {
-	type: "postgres",
-	url: process.env.DATABASE_URL,
-	entities: ["./dist/entities/*.js"],
-	logging: false,
+    type: "sqlite",
+    database: "database.db",
+    entities: ["./dist/entities/*.js"],
+    logging: true,
     synchronize: true,
     migrations: ["./dist/migrations/*.js"],
     cli: {
         "migrationsDir": "./dist/migrations"
-    },
-    // ssl: process.env.NODE_ENV === 'development' ? true : false
-    ssl: process.env.NODE_ENV === 'development' ? false: {
-        require: true,
-          rejectUnauthorized: false,
-        },
- }
+    }
+}

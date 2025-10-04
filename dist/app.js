@@ -11,8 +11,8 @@ var cors_1 = __importDefault(require("cors"));
 var typeorm_1 = require("typeorm");
 var utils_1 = require("./utils");
 var private_routes_1 = __importDefault(require("./private_routes"));
-var public_routes_1 = __importDefault(require("./public_routes"));
-var PORT = 3001;
+var routes_1 = __importDefault(require("./routes"));
+var PORT = process.env.PORT || '3001';
 var PUBLIC_URL = utils_1.url(PORT);
 var app = express_1["default"]();
 // create a database connection based on the ./ormconfig.js file
@@ -30,7 +30,7 @@ app.get('/', function (req, res) { return utils_1.renderIndex(app, PUBLIC_URL).t
 // Import public routes from ./src/public_routes.ts file
 // this line has to be ABOVE the JWT middleware to avoid
 // the jwt middleware to influence these enpoints
-app.use(public_routes_1["default"]);
+app.use(routes_1["default"]);
 /**
  * ⚠️ IMPORTANT
  * This is the place to include your JWT middleware that will make private routes really private

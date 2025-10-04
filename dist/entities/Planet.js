@@ -37,17 +37,49 @@ var Planet = /** @class */ (function (_super) {
         __metadata("design:type", Number)
     ], Planet.prototype, "id");
     __decorate([
-        typeorm_1.Column({ unique: true }),
+        typeorm_1.Column(),
         __metadata("design:type", String)
     ], Planet.prototype, "name");
     __decorate([
         typeorm_1.Column({ nullable: true }),
         __metadata("design:type", String)
-    ], Planet.prototype, "picture_url");
+    ], Planet.prototype, "diameter");
     __decorate([
-        typeorm_1.ManyToMany(function () { return Users_1.Users; }, function (user) { return user.planets; }),
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "rotation_period");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "orbital_period");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "gravity");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "population");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "climate");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "terrain");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "surface_water");
+    __decorate([
+        typeorm_1.Column({ nullable: true }),
+        __metadata("design:type", String)
+    ], Planet.prototype, "url");
+    __decorate([
+        typeorm_1.ManyToMany(function () { return Users_1.Users; }, function (user) { return user.favorite_planets; }),
         __metadata("design:type", Array)
-    ], Planet.prototype, "users");
+    ], Planet.prototype, "favorited_by");
     Planet = __decorate([
         typeorm_1.Entity()
     ], Planet);
